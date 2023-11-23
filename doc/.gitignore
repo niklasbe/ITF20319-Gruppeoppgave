@@ -3,3 +3,4 @@
 !.gitignore
 !doc.pdf
 !*.tex
+!sections/
