@@ -2,11 +2,11 @@ import { Account } from './Account';
 
 class Guide extends Account {
     
-    private price : number;
-    private rating : number;
-    private description : string;
-    private languages : string[];
-    private availability : string[];
+    private price : number = 0;
+    private rating : number = 0;
+    private description : string = "";
+    private languages : string[] = [];
+    private availability : string[] = [];
 
     constructor(id: number, username: string, password: string, email: string, address: string) {
         super(id, username, password, email, address);

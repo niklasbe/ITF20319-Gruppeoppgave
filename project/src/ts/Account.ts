@@ -4,7 +4,7 @@ export class Account {
     private password: string;
     private email: string;
     private address: string;
-    private geolocation: string;
+    private geolocation: string = "";
 
     constructor(id: number, username: string, password: string, email: string, address: string) {
         this.id = id;
