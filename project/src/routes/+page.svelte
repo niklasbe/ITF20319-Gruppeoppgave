@@ -1,10 +1,21 @@
 <script lang="ts">
     import { tours } from '$lib/Tour'
+
+
     import { loginStatus } from '$lib/Tour';
     import { statusStrings } from '$lib/Tour';
     import { Status } from '$lib/Tour';
     
-    console.log(loginStatus);
+
+    let searchTerm = '';
+    
+    let filteredTours = tours;
+
+    function handleSearchInput() {
+        console.log(searchTerm);
+        filteredTours = tours.filter(tour => tour.title.toLowerCase().includes(searchTerm.toLowerCase()));
+    }
+
 </script>
 
 
@@ -42,22 +53,54 @@
 
         <!-- search -->
         <div>
-            <form class="flex flex-col lg:flex-row gap-4">
-                <input type="text" placeholder="Søk etter sted" class="p-2 w-full border border-gray-400 rounded-lg shadow-lg" />
-                <button type="submit" class="p-2 border border-gray-400 rounded-lg shadow-lg hover:bg-slate-300">Søk</button>
-            </form>
+            <input type="text" placeholder="Søk etter sted" class="p-2 w-full border border-gray-400 rounded-lg shadow-lg" 
+            bind:value={searchTerm}
+            on:input={handleSearchInput}
+            />
         </div>
 
         <!-- tours -->
+        <div class="flex flex-col lg:flex-row flex-wrap gap-4">
+            {#if filteredTours.length === 0}
+                <p class="text-xl">Ingen treff.</p>
+            {:else}
+            {#each filteredTours as tour}
+                <article class="flex flex-col grow border border-gray-400 rounded-lg shadow-lg hover:scale-100 ease-in-out duration-150 hover:-translate-y-1">
+                    <h3 class="m-4 font-semibold">{tour.title}</h3>
+                    <p class="m-4">{tour.description}</p>
+                    <div class="flex flex-col">
+                        <div class="flex flex-row">
+                            <img src="clock.svg" alt="clock" class="w-4 h-4 m-4" />
+                            <p class="m-4 font-light italic">{tour.time}</p>
+                        </div>
+                        <div class="flex flex-row">
+                            <img src="calendar.svg" alt="calendar" class="w-4 h-4 m-4" />
+                            <p class="m-4 font-light italic">{tour.date}</p>
+                        </div>
+                        <div class="flex flex-row">
+                            <img src="map-pin.svg" alt="location" class="w-4 h-4 m-4" />
+                            <p class="m-4 font-light italic">{tour.location}</p>
+                        </div>
+                        <div class="flex flex-row">
+                            <img src="dollar-sign.svg" alt="price" class="w-4 h-4 m-4" />
+                            <p class="m-4 font-light italic">{tour.price}</p>
+                        </div>
+                    </div>
+                </article>
+            {/each}
+            {/if}
+        </div>
+        
+        <!--
         <div class="flex flex-col lg:flex-row flex-wrap gap-4">
 			{#each tours as tour}
             <section class="flex flex-col grow border border-gray-400 rounded-lg shadow-lg hover:scale-100 ease-in-out duration-150 hover:-translate-y-1">
                 <h3 class="m-4 font-semibold">{ tour.title }</h3>
                 <p class="m-4">{tour.description }</p>
                 <p class="m-4 font-light italic">{tour.date}</p>
-                
             </section>
             {/each}
         </div>
+        -->
     </div>
 </div>
