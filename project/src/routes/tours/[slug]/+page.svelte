@@ -147,12 +147,14 @@
                     </form>
                 </div>
             {:else if $loginStatus == statusStrings[Status.Admin]}
-            Admin pwn :D
-            <div>
-                {#each bookedTours as tour (tour.id)}
-                    <p>{tour.id}</p>
-                {/each}
+            
+            {#if booked}<div>
+                Som administrator kan du fjerne bookingen:
+                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" on:click={unbookTour}>
+                    Avbestill
+                </button>
             </div>
+            {/if}
             <div class="flex flex-col gap-4 w-full">
                 <form class=m-2>
                     <label for="title">Tittel:</label>
