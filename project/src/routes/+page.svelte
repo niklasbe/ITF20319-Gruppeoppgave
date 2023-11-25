@@ -27,15 +27,24 @@
         <div class="flex flex-col lg:flex-row gap-8 w-full items-center justify-between">
 
 			<!-- login -->
-			<a href="login">
-				<div class="rounded-lg shadow-lg border border-gray-400 hover:bg-slate-300">
-					<p class="p-4 text-xl">Logg inn</p>
-				</div>
-			</a>
+            {#if $loginStatus === statusStrings[Status.NotLoggedIn]}
+                <a href="login">
+                    <div class="rounded-lg shadow-lg border border-gray-400 hover:bg-slate-300">
+                        <p class="p-4 text-xl">Logg inn</p>
+                    </div>
+                </a>
+            {:else}
+                <a href="profile">
+                    <div class="rounded-lg shadow-lg border border-gray-400 hover:bg-slate-300">
+                        <p class="p-4 text-xl">Profil</p>
+                    </div>
+                </a>
+            {/if}
 
             <!-- title -->
 			<p class="text-3xl lg:text-4xl p-4">Reiseguide</p>
 
+            <!-- login status -->
             {#if $loginStatus === statusStrings[Status.User]}
                 <p>Logget inn som bruker.</p>
             {:else if $loginStatus === statusStrings[Status.Guide]}

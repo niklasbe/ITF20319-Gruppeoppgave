@@ -29,7 +29,7 @@
         
         <div class="flex flex-col lg:flex-row gap-8 w-full items-center">
             
-            <!-- login -->
+            <!-- back -->
             <a href="/">
                 <div class="rounded-lg shadow-lg border border-gray-400 hover:bg-slate-300">
                     <p class="p-4 text-xl">Tilbake</p>

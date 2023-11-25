@@ -17,7 +17,6 @@ export interface Tour {
     guide: string;
 }
 
-export const loginStatus = writable("");
 
 export enum Status {
     NotLoggedIn,
@@ -27,3 +26,5 @@ export enum Status {
 }
 
 export const statusStrings = ["NotLoggedIn", "User", "Guide", "Admin"];
+
+export const loginStatus = writable(statusStrings[Status.NotLoggedIn]);
