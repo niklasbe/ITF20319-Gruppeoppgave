@@ -24,8 +24,6 @@ export enum Status {
 
 export const statusStrings = ["NotLoggedIn", "User", "Guide", "Admin"];
 
-
-// create a few tours
 export const tours: Tour[] = [
     {
         id: 0,
@@ -67,9 +65,9 @@ export const tours: Tour[] = [
         id: 3,
         date: "2023-01-01",
         time: "12:00",
-        location: "New York",
-        title: "A tour of New York",
-        description: "A tour of New York",
+        location: "Hevingen",
+        title: "Smash på Hevingen",
+        description: "Her smashes det - og det hardt!",
         price: 100,
         spots: 10,
         spotsLeft: 2,
