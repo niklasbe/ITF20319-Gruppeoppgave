@@ -21,9 +21,9 @@
         booked = false;
     }
 
-    function update() {
-        console.log(tour.spotsLeft);
-    }
+    // TODO (After persistent storage):
+    // Check if user is already booked
+    // If page_id in user's booked tours, set booked to true
 </script>
 
 <div class="container mx-auto"> 
