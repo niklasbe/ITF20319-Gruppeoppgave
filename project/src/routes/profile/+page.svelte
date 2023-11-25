@@ -1,23 +1,23 @@
 <script lang="ts">
-import { onMount } from 'svelte';
-import { goto } from '$app/navigation'; // for SvelteKit
-// import { goto } from '@sapper/app'; // for Sapper
-import { Status, loginStatus, statusStrings } from '$lib/Tour';
-
-
-function handleLogOffClick() {
+    import { onMount } from 'svelte';
+    import { goto } from '$app/navigation'; // for SvelteKit
+    // import { goto } from '@sapper/app'; // for Sapper
+    import { Status, loginStatus, statusStrings } from '$lib/Tour';
+    import { bookedTours } from '$lib/Tour';
+    
+    function handleLogOffClick() {
         // Your logic here
         console.log('Log Off clicked');
         loginStatus.set(statusStrings[Status.NotLoggedIn]);
     }
-
-/* redirect if not logged in */
-onMount(async () => {
-    const storeValue = $loginStatus;
-    if (storeValue === statusStrings[Status.NotLoggedIn]) {
-        goto('/');
-    }
-});
+    
+    /* redirect if not logged in */
+    onMount(async () => {
+        const storeValue = $loginStatus;
+        if (storeValue === statusStrings[Status.NotLoggedIn]) {
+            goto('/');
+        }
+    });
 </script>
 
 <div class="container mx-auto">
@@ -34,17 +34,17 @@ onMount(async () => {
             </a>
             
             <!-- title -->
-			<p class="text-3xl lg:text-4xl p-4">Profil</p>
-
+            <p class="text-3xl lg:text-4xl p-4">Profil</p>
+            
             <!-- login status -->
             {#if $loginStatus === statusStrings[Status.User]}
-                <p>Logget inn som bruker.</p>
+            <p>Logget inn som bruker.</p>
             {:else if $loginStatus === statusStrings[Status.Guide]}
-                <p>Logget inn som guide.</p>
+            <p>Logget inn som guide.</p>
             {:else if $loginStatus === statusStrings[Status.Admin]}
-                <p>Logget inn som admin.</p>
+            <p>Logget inn som admin.</p>
             {:else}
-                <p>Ikke logget inn.</p>
+            <p>Ikke logget inn.</p>
             {/if}
             
         </div>
@@ -55,6 +55,39 @@ onMount(async () => {
                     <p class="p-4 text-xl">Logg av</p>
                 </div>
             </a>
+        </div>
+        <p class="text-xl">Bestilte turer:</p>
+        
+        <!-- booked tours -->
+        <!-- currently only shows the booked tours -->
+        <div class="flex flex-col lg:flex-row flex-wrap gap-4">
+            {#each bookedTours as tour (tour.id)}
+            <a href="tours/{tour.id}">
+                
+                <article class="flex flex-col grow border border-gray-400 rounded-lg shadow-lg hover:scale-100 ease-in-out duration-150 hover:-translate-y-1">
+                    <h3 class="m-4 font-semibold">{tour.title}</h3>
+                    <p class="m-4">{tour.description}</p>
+                    <div class="flex flex-col">
+                        <div class="flex flex-row items-center">
+                            <img src="clock.svg" alt="clock" class="w-4 h-4 m-4" />
+                            <p class="m-4 font-light italic">{tour.time}</p>
+                        </div>
+                        <div class="flex flex-row">
+                            <img src="calendar.svg" alt="calendar" class="w-4 h-4 m-4" />
+                            <p class="m-4 font-light italic">{tour.date}</p>
+                        </div>
+                        <div class="flex flex-row items-center">
+                            <img src="map-pin.svg" alt="location" class="w-4 h-4 m-4" />
+                            <p class="m-4 font-light italic">{tour.location}</p>
+                        </div>
+                        <div class="flex flex-row items-center">
+                            <img src="dollar-sign.svg" alt="price" class="w-4 h-4 m-4" />
+                            <p class="m-4 font-light italic">{tour.price}</p>
+                        </div>
+                    </div>
+                </article>
+            </a>
+            {/each}
         </div>
     </div>
 </div>
