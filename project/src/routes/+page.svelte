@@ -7,11 +7,12 @@
     import { Status } from '$lib/Tour';
     
 
-    let searchTerm = '';
-    
+
+    /* code for searching tours */
+    let searchTerm = '';    
     let filteredTours = tours;
 
-    function handleSearchInput() {
+    function searchTours() {
         console.log(searchTerm);
         filteredTours = tours.filter(tour => tour.title.toLowerCase().includes(searchTerm.toLowerCase()));
     }
@@ -55,7 +56,7 @@
         <div>
             <input type="text" placeholder="Søk etter sted" class="p-2 w-full border border-gray-400 rounded-lg shadow-lg" 
             bind:value={searchTerm}
-            on:input={handleSearchInput}
+            on:input={searchTours}
             />
         </div>
 
@@ -90,17 +91,5 @@
             {/each}
             {/if}
         </div>
-        
-        <!--
-        <div class="flex flex-col lg:flex-row flex-wrap gap-4">
-			{#each tours as tour}
-            <section class="flex flex-col grow border border-gray-400 rounded-lg shadow-lg hover:scale-100 ease-in-out duration-150 hover:-translate-y-1">
-                <h3 class="m-4 font-semibold">{ tour.title }</h3>
-                <p class="m-4">{tour.description }</p>
-                <p class="m-4 font-light italic">{tour.date}</p>
-            </section>
-            {/each}
-        </div>
-        -->
     </div>
 </div>
