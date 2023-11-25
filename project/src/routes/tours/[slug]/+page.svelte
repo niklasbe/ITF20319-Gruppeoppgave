@@ -28,9 +28,16 @@
 
 <div class="container mx-auto"> 
     <article class="flex flex-col p-4 lg:my-16 lg:mx-24 gap-8 border rounded-lg">
+        
         <!--Title, location-->
-        <div class="flex flex-col lg:flex-row gap-8 w-full items-center justify-between">
-            <h1 class="underline underline-offset-2 text-2xl p-4">{tour.title}</h1>
+        <div class="flex flex-col lg:flex-row gap-8 w-full items-center">
+            <!-- back -->
+            <a href="/">
+                <div class="rounded-lg shadow-lg border border-gray-400 hover:bg-slate-300">
+                    <p class="p-4 text-xl">Tilbake</p>
+                </div>
+            </a>
+            <h1 class="underline underline-offset-2 text-2xl p-4 grow">{tour.title}</h1>
             <div class="flex flex-row items-center">
                 <img src="../map-pin.svg" alt="location" class="w-4 h-4 m-1" />
                 <p class="m-2 font-light italic">{tour.location}</p>
