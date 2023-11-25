@@ -1,3 +1,5 @@
+import { writable } from "svelte/store";
+
 export interface Tour {
     id: number;
     date: string;
@@ -10,6 +12,18 @@ export interface Tour {
     spotsLeft: number;
     guide: string;
 }
+
+export const loginStatus = writable("");
+
+export enum Status {
+    NotLoggedIn,
+    User,
+    Guide,
+    Admin
+}
+
+export const statusStrings = ["NotLoggedIn", "User", "Guide", "Admin"];
+
 
 // create a few tours
 export const tours: Tour[] = [

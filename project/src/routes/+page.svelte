@@ -1,6 +1,10 @@
 <script lang="ts">
     import { tours } from '$lib/Tour'
+    import { loginStatus } from '$lib/Tour';
+    import { statusStrings } from '$lib/Tour';
+    import { Status } from '$lib/Tour';
     
+    console.log(loginStatus);
 </script>
 
 
@@ -8,7 +12,7 @@
     <!-- main content flex -->
     <div class="flex flex-col p-4 lg:my-16 lg:mx-24 gap-8 border rounded-lg">
 
-        <div class="flex flex-col lg:flex-row gap-8 w-full items-center">
+        <div class="flex flex-col lg:flex-row gap-8 w-full items-center justify-between">
 
 			<!-- login -->
 			<a href="login">
@@ -18,7 +22,17 @@
 			</a>
 
             <!-- title -->
-			<p class="text-3xl lg:text-4xl p-2">Reiseguide</p>
+			<p class="text-3xl lg:text-4xl p-4">Reiseguide</p>
+
+            {#if $loginStatus === statusStrings[Status.User]}
+                <p>Logget inn som bruker.</p>
+            {:else if $loginStatus === statusStrings[Status.Guide]}
+                <p>Logget inn som guide.</p>
+            {:else if $loginStatus === statusStrings[Status.Admin]}
+                <p>Logget inn som admin.</p>
+            {:else}
+                <p>Ikke logget inn.</p>
+            {/if}
         </div>
 
         <div>

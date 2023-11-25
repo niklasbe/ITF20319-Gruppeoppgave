@@ -1,5 +1,25 @@
 <script lang="ts">
-    
+    import { loginStatus } from '$lib/Tour';
+    import { Status } from '$lib/Tour';
+    import { statusStrings } from '$lib/Tour';
+
+    function handleUserClick() {
+        // Your logic here
+        console.log('User clicked');
+        loginStatus.set(statusStrings[Status.User]);
+    }
+
+    function handleGuideClick() {
+        // Your logic here
+        console.log('Guide clicked');
+        loginStatus.set(statusStrings[Status.Guide]);
+    }
+
+    function handleAdminClick() {
+        // Your logic here
+        console.log('Admin clicked');
+        loginStatus.set(statusStrings[Status.Admin]); 
+    }
 </script>
 
 
@@ -20,20 +40,19 @@
             <p class="text-3xl lg:text-4xl p-2">Logg inn som:</p>
             
             
-            
         </div>
         <div class="flex flex-col lg:flex-row gap-8 w-full items-center">
-            <a href="#" class="w-full">
+            <a href="/" class="w-full" on:click={handleUserClick}>
                 <div class="rounded-lg shadow-lg border border-gray-400 hover:bg-slate-300">
                     <p class="p-4 text-xl">Bruker</p>
                 </div>
             </a>
-            <a href="#" class="w-full">
+            <a href="/" class="w-full" on:click={handleGuideClick}>
                 <div class="rounded-lg shadow-lg border border-gray-400 hover:bg-slate-300">
                     <p class="p-4 text-xl">Guide</p>
                 </div>
             </a>
-            <a href="#" class="w-full">
+            <a href="/" class="w-full" on:click={handleAdminClick}>
                 <div class="rounded-lg shadow-lg border border-gray-400 hover:bg-slate-300">
                     <p class="p-4 text-xl">Admin</p>
                 </div>
