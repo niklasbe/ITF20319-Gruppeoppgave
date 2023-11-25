@@ -32,7 +32,7 @@
       "description": "Her tar jeg deg fra den ene enden av Fredrikstad til den andre.",
       "price": 100,
       "spots": 10,
-      "spotsLeft": 2,
+      "spotsLeft": 0,
       "guide": "Truls Gundersen"
     },
     {

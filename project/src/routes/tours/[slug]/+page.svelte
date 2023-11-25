@@ -7,6 +7,12 @@
     // get tour by slug id
     let tour = getTourById(Number(data.slug))!;
 
+    let booked = false;
+
+    function bookTour() {
+        tour.spotsLeft--;
+        booked = true;
+    }
 </script>
 
 <div class="container mx-auto"> 
@@ -53,6 +59,22 @@
         <!-- Description -->
         <div class="flex flex-col lg:flex-row gap-8 w-full items-center justify-between">
             <p>{tour.description}</p>
+        </div>
+        <!-- Book tour -->
+        <div class="mx">
+            {#if booked}
+                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                    Turen er bestilt!
+                </button>
+            {:else if tour.spotsLeft > 0}
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" on:click={bookTour}>
+                    Bestill Tur
+                </button>
+            {:else}
+                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                    Turen er full!
+                </button>
+            {/if}
         </div>
     </article>
 </div>
