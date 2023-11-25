@@ -1,5 +1,8 @@
 <script lang="ts">
     import { getTourById } from "$lib/Tour";
+    import { loginStatus } from '$lib/Tour';
+    import { statusStrings } from '$lib/Tour';
+    import { Status } from '$lib/Tour';
 
 	export let data;
     console.log(data);
@@ -12,6 +15,10 @@
     function bookTour() {
         tour.spotsLeft--;
         booked = true;
+    }
+    function unbookTour() {
+        tour.spotsLeft++;
+        booked = false;
     }
 </script>
 
@@ -61,20 +68,25 @@
             <p>{tour.description}</p>
         </div>
         <!-- Book tour -->
-        <div class="mx">
-            {#if booked}
-                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+        <div>
+            {#if $loginStatus != statusStrings[Status.User]}
+                <p>Du må være logget inn som bruker for å bestille en tur.</p>
+            {:else}
+                {#if booked}
+                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" on:click={unbookTour}>
                     Turen er bestilt!
                 </button>
-            {:else if tour.spotsLeft > 0}
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" on:click={bookTour}>
-                    Bestill Tur
-                </button>
-            {:else}
-                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                    Turen er full!
-                </button>
+                {:else if tour.spotsLeft > 0}
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" on:click={bookTour}>
+                        Bestill Tur
+                    </button>
+                {:else}
+                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                        Turen er full!
+                    </button>
+                {/if}
             {/if}
+            
         </div>
     </article>
 </div>
