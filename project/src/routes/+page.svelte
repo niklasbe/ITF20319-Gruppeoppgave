@@ -79,7 +79,7 @@
                     <h3 class="m-4 font-semibold">{tour.title}</h3>
                     <p class="m-4">{tour.description}</p>
                     <div class="flex flex-col">
-                        <div class="flex flex-row">
+                        <div class="flex flex-row items-center">
                             <img src="clock.svg" alt="clock" class="w-4 h-4 m-4" />
                             <p class="m-4 font-light italic">{tour.time}</p>
                         </div>
@@ -87,11 +87,11 @@
                             <img src="calendar.svg" alt="calendar" class="w-4 h-4 m-4" />
                             <p class="m-4 font-light italic">{tour.date}</p>
                         </div>
-                        <div class="flex flex-row">
+                        <div class="flex flex-row items-center">
                             <img src="map-pin.svg" alt="location" class="w-4 h-4 m-4" />
                             <p class="m-4 font-light italic">{tour.location}</p>
                         </div>
-                        <div class="flex flex-row">
+                        <div class="flex flex-row items-center">
                             <img src="dollar-sign.svg" alt="price" class="w-4 h-4 m-4" />
                             <p class="m-4 font-light italic">{tour.price}</p>
                         </div>
