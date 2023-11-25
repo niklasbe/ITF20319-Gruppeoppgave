@@ -74,31 +74,35 @@
             {#if filteredTours.length === 0}
                 <p class="text-xl">Ingen treff.</p>
             {:else}
-            {#each filteredTours as tour}
-                <article class="flex flex-col grow border border-gray-400 rounded-lg shadow-lg hover:scale-100 ease-in-out duration-150 hover:-translate-y-1">
-                    <h3 class="m-4 font-semibold">{tour.title}</h3>
-                    <p class="m-4">{tour.description}</p>
-                    <div class="flex flex-col">
-                        <div class="flex flex-row items-center">
-                            <img src="clock.svg" alt="clock" class="w-4 h-4 m-4" />
-                            <p class="m-4 font-light italic">{tour.time}</p>
+            {#each filteredTours as tour (tour.id)}
+                <a href="tours/{tour.id}">
+
+                    <article class="flex flex-col grow border border-gray-400 rounded-lg shadow-lg hover:scale-100 ease-in-out duration-150 hover:-translate-y-1">
+                        <h3 class="m-4 font-semibold">{tour.title}</h3>
+                        <p class="m-4">{tour.description}</p>
+                        <div class="flex flex-col">
+                            <div class="flex flex-row items-center">
+                                <img src="clock.svg" alt="clock" class="w-4 h-4 m-4" />
+                                <p class="m-4 font-light italic">{tour.time}</p>
+                            </div>
+                            <div class="flex flex-row">
+                                <img src="calendar.svg" alt="calendar" class="w-4 h-4 m-4" />
+                                <p class="m-4 font-light italic">{tour.date}</p>
+                            </div>
+                            <div class="flex flex-row items-center">
+                                <img src="map-pin.svg" alt="location" class="w-4 h-4 m-4" />
+                                <p class="m-4 font-light italic">{tour.location}</p>
+                            </div>
+                            <div class="flex flex-row items-center">
+                                <img src="dollar-sign.svg" alt="price" class="w-4 h-4 m-4" />
+                                <p class="m-4 font-light italic">{tour.price}</p>
+                            </div>
                         </div>
-                        <div class="flex flex-row">
-                            <img src="calendar.svg" alt="calendar" class="w-4 h-4 m-4" />
-                            <p class="m-4 font-light italic">{tour.date}</p>
-                        </div>
-                        <div class="flex flex-row items-center">
-                            <img src="map-pin.svg" alt="location" class="w-4 h-4 m-4" />
-                            <p class="m-4 font-light italic">{tour.location}</p>
-                        </div>
-                        <div class="flex flex-row items-center">
-                            <img src="dollar-sign.svg" alt="price" class="w-4 h-4 m-4" />
-                            <p class="m-4 font-light italic">{tour.price}</p>
-                        </div>
-                    </div>
-                </article>
-            {/each}
-            {/if}
+                    </article>
+                </a>
+                    {/each}
+                    {/if}
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+        

@@ -25,6 +25,11 @@ export enum Status {
     Admin
 }
 
+
+export const getTourById = (id: number): Tour | undefined => {
+    return tours.find(tour => tour.id === id);
+}
+
 export const statusStrings = ["NotLoggedIn", "User", "Guide", "Admin"];
 
 export const loginStatus = writable(statusStrings[Status.NotLoggedIn]);
