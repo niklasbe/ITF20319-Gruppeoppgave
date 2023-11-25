@@ -3,6 +3,7 @@
     import { loginStatus } from '$lib/Tour';
     import { statusStrings } from '$lib/Tour';
     import { Status } from '$lib/Tour';
+    import { bookedTours } from "$lib/Tour";
 
 	export let data;
     console.log(data);
@@ -11,14 +12,22 @@
     let tour = getTourById(Number(data.slug))!;
 
     let booked = false;
+    bookedTours.forEach(t => {
+        if (t.id == tour.id) {
+            booked = true;
+            return;
+        }
+    });
 
     function bookTour() {
         tour.spotsLeft--;
         booked = true;
+        bookedTours.push(tour);
     }
     function unbookTour() {
         tour.spotsLeft++;
         booked = false;
+        bookedTours.splice(bookedTours.indexOf(tour), 1);
     }
 
     // TODO (After persistent storage):

@@ -4,6 +4,8 @@ import jsonData from "../tours.json";
 // create a typescript array of tours from the json data
 export const tours: Tour[] = jsonData;
 
+export let bookedTours: Tour[] = [];
+
 export interface Tour {
     id: number;
     date: string;
