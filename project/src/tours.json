@@ -58,5 +58,17 @@
       "spots": 10,
       "spotsLeft": 2,
       "guide": "Jon Akersveen"
+    },
+    {
+      "id": 5,
+      "date": "2023-12-08",
+      "time": "14:00",
+      "location": "Borgenhaugen",
+      "title": "Oppmøte på Coop Extra",
+      "description": "Vi møtes på Coop Extra og går en tur rundt i Borgenhaugen og avslutter med bønnestund i kirka.",
+      "price": 100,
+      "spots": 10,
+      "spotsLeft": 2,
+      "guide": "Ola Nordmann"
     }
   ]
