@@ -13,27 +13,27 @@
     },
     {
       "id": 1,
-      "date": "2021-01-01",
+      "date": "2023-12-27",
       "time": "12:00",
-      "location": "New York",
-      "title": "A tour of New York",
-      "description": "A tour of New York",
-      "price": 100,
+      "location": "Joe & The Juice",
+      "title": "Storbyen rundt med Joe!",
+      "description": "En hyggelig omvisning i Storbyen med Joe fra Joe & The Juice. Her får du se alt fra klesbutikker til kafeer. Juice er inkludert i prisen!",
+      "price": 200,
       "spots": 10,
       "spotsLeft": 5,
-      "guide": "John Doe"
+      "guide": "Joe Juice"
     },
     {
       "id": 2,
-      "date": "2022-01-01",
+      "date": "2023-12-07",
       "time": "12:00",
-      "location": "New York",
-      "title": "A tour of New York",
-      "description": "A tour of New York",
+      "location": "Fredrikstad",
+      "title": "Rundtur i Fredrikstad",
+      "description": "Her tar jeg deg fra den ene enden av Fredrikstad til den andre.",
       "price": 100,
       "spots": 10,
       "spotsLeft": 2,
-      "guide": "John Doe"
+      "guide": "Truls Gundersen"
     },
     {
       "id": 3,
@@ -50,13 +50,13 @@
     {
       "id": 4,
       "date": "2024-01-01",
-      "time": "12:00",
-      "location": "New York",
-      "title": "A tour of New York",
-      "description": "A tour of New York",
+      "time": "00:00",
+      "location": "Halden",
+      "title": "Nyåret ved grensa",
+      "description": "Allsang er en ting men å skyte raketter, nå snakker vi! Her i Halden får du en opplevelse du sent vil glemme. Vi skyter raketter over grensa og nyter utsikten av Halden by.",
       "price": 100,
       "spots": 10,
       "spotsLeft": 2,
-      "guide": "John Doe"
+      "guide": "Jon Akersveen"
     }
   ]
