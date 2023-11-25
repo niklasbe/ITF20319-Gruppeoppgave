@@ -146,6 +146,64 @@
                         <input type="time" id="time" name="time" bind:value="{tour.time}">
                     </form>
                 </div>
+            {:else if $loginStatus == statusStrings[Status.Admin]}
+            Admin pwn :D
+            <div>
+                {#each bookedTours as tour (tour.id)}
+                    <p>{tour.id}</p>
+                {/each}
+            </div>
+            <div class="flex flex-col gap-4 w-full">
+                <form>
+                    <label for="title">Tittel:</label>
+                    <input type="text" id="title" name="title" bind:value="{tour.title}">
+                </form>
+
+                <form>
+                    <label for="description">Beskrivelse:</label>
+                    <textarea id="description" name="description" bind:value="{tour.description}" class="w-full h-16"></textarea>
+                </form>
+            </div>
+
+            <div class="flex flex-col gap-2 w-full min-w-4">
+                <form>
+                    <label for="spotsLeft">Antall tilgjengelige plasser:</label>
+                    <input type="number" id="spotsLeft" name="spotsLeft" min="1" max="10" bind:value="{tour.spotsLeft}">
+                </form>
+
+                <form>
+                    <label for="spots">Maks plasser:</label>
+                    <input type="number" id="spots" name="spots" bind:value="{tour.spotsLeft}">
+
+                
+            </div>
+            <div class="flex flex-col lg:flex-row gap-10 w-full items-center min-w-4">
+                <form>
+                    <label for="location">Sted:</label>
+                    <input type="text" id="location" name="location" bind:value="{tour.location}">
+                </form>
+
+                <form>
+                    <label for="guide">Guide:</label>
+                    <input type="text" id="guide" name="guide" bind:value="{tour.guide}">
+                </form>
+
+                <form>
+                    <label for="price">Pris:</label>
+                    <input type="number" id="price" name="price" min="0" max="10000" bind:value="{tour.price}">
+                </form>
+            </div>
+            <div class="flex flex-col lg:flex-row gap-10 w-full items-center min-w-4">
+                <form>
+                    <label for="date">Dato:</label>
+                    <input type="date" id="date" name="date" bind:value="{tour.date}">
+                </form>
+
+                <form>
+                    <label for="time">Klokkeslett:</label>
+                    <input type="time" id="time" name="time" bind:value="{tour.time}">
+                </form>
+            </div>
             {:else}
             {#if booked}
                 <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" on:click={unbookTour}>
