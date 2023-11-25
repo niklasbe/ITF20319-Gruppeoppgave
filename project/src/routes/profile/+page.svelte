@@ -5,6 +5,12 @@ import { goto } from '$app/navigation'; // for SvelteKit
 import { Status, loginStatus, statusStrings } from '$lib/Tour';
 
 
+function handleLogOffClick() {
+        // Your logic here
+        console.log('Log Off clicked');
+        loginStatus.set(statusStrings[Status.NotLoggedIn]);
+    }
+
 /* redirect if not logged in */
 onMount(async () => {
     const storeValue = $loginStatus;
@@ -27,7 +33,6 @@ onMount(async () => {
                 </div>
             </a>
             
-            
             <!-- title -->
 			<p class="text-3xl lg:text-4xl p-4">Profil</p>
 
@@ -43,6 +48,13 @@ onMount(async () => {
             {/if}
             
         </div>
-        
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- log off -->
+            <a href="/" on:click={handleLogOffClick}>
+                <div class="rounded-lg shadow-lg border border-gray-400 hover:bg-slate-300">
+                    <p class="p-4 text-xl">Logg av</p>
+                </div>
+            </a>
+        </div>
     </div>
 </div>
