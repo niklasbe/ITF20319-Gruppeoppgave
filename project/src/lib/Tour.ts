@@ -4,7 +4,8 @@ import jsonData from "../tours.json";
 // create a typescript array of tours from the json data
 export const tours: Tour[] = jsonData;
 
-export let bookedTours: Tour[] = [];
+// store booked tours in a separate array
+export const bookedTours: Tour[] = [];
 
 export interface Tour {
     id: number;
@@ -27,7 +28,10 @@ export enum Status {
     Admin
 }
 
-
+/* 
+    Returns a tour with the given id
+    If no tour is found, return undefined
+*/
 export const getTourById = (id: number): Tour | undefined => {
     return tours.find(tour => tour.id === id);
 }
