@@ -2,11 +2,13 @@ name: Run Vitest
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - master 
     paths:
       - 'project/**'
   pull_request:
-    branches: [ main ]
+    branches:
+      - master 
     paths:
       - 'project/**'
 
