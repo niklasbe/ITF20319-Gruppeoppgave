@@ -94,6 +94,7 @@
         <!-- so just display all tours -->
         {:else if $loginStatus === statusStrings[Status.Guide]}
         <p class="text-xl">Dine turer:</p>
+        
         <div class="flex flex-col lg:flex-row flex-wrap gap-4">
             {#each tours as tour (tour.id)}
             <a href="tours/{tour.id}">
