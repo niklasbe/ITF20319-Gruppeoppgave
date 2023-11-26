@@ -1,12 +1,10 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    import { goto } from '$app/navigation'; // for SvelteKit
-    // import { goto } from '@sapper/app'; // for Sapper
-    import { Status, loginStatus, statusStrings } from '$lib/Tour';
-    import { bookedTours } from '$lib/Tour';
+    import { goto } from '$app/navigation';
+
+    import { Status, loginStatus, statusStrings, bookedTours, tours} from '$lib/Tour';
     
     function handleLogOffClick() {
-        // Your logic here
         console.log('Log Off clicked');
         loginStatus.set(statusStrings[Status.NotLoggedIn]);
     }
@@ -56,6 +54,8 @@
                 </div>
             </a>
         </div>
+
+        {#if $loginStatus === statusStrings[Status.User]}
         <p class="text-xl">Bestilte turer:</p>
         
         <!-- booked tours -->
@@ -89,5 +89,40 @@
             </a>
             {/each}
         </div>
+        <!-- display guide's tours -->
+        <!-- for the sake of this prototype, there is only a single guide controlling all tours -->
+        <!-- so just display all tours -->
+        {:else if $loginStatus === statusStrings[Status.Guide]}
+        <p class="text-xl">Dine turer:</p>
+        
+        <div class="flex flex-col lg:flex-row flex-wrap gap-4">
+            {#each tours as tour (tour.id)}
+            <a href="tours/{tour.id}">
+                <article class="flex flex-col grow border border-gray-400 rounded-lg shadow-lg hover:scale-100 ease-in-out duration-150 hover:-translate-y-1">
+                    <h3 class="m-4 font-semibold">{tour.title}</h3>
+                    <p class="m-4">{tour.description}</p>
+                    <div class="flex flex-col">
+                        <div class="flex flex-row items-center">
+                            <img src="clock.svg" alt="clock" class="w-4 h-4 m-4" />
+                            <p class="m-4 font-light italic">{tour.time}</p>
+                        </div>
+                        <div class="flex flex-row">
+                            <img src="calendar.svg" alt="calendar" class="w-4 h-4 m-4" />
+                            <p class="m-4 font-light italic">{tour.date}</p>
+                        </div>
+                        <div class="flex flex-row items-center">
+                            <img src="map-pin.svg" alt="location" class="w-4 h-4 m-4" />
+                            <p class="m-4 font-light italic">{tour.location}</p>
+                        </div>
+                        <div class="flex flex-row items-center">
+                            <img src="dollar-sign.svg" alt="price" class="w-4 h-4 m-4" />
+                            <p class="m-4 font-light italic">{tour.price}</p>
+                        </div>
+                    </div>
+                </article>
+            </a>
+            {/each}
+        </div>
+        {/if}
     </div>
 </div>
