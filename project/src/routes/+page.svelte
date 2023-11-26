@@ -13,7 +13,6 @@
     let filteredTours = tours;
 
     function searchTours() {
-        console.log(searchTerm);
         filteredTours = tours.filter(tour => tour.title.toLowerCase().includes(searchTerm.toLowerCase()));
     }
 

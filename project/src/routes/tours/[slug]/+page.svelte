@@ -6,7 +6,6 @@
     import { bookedTours } from "$lib/Tour";
 
 	export let data;
-    console.log(data);
 
     // get tour by slug id
     let tour = getTourById(Number(data.slug))!;
@@ -53,6 +52,7 @@
         tour.date = newTour.date;
         tour.time = newTour.time;
     }
+    // TODO
     function deleteTour() {
 
     }

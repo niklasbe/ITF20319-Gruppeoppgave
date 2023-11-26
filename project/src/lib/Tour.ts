@@ -36,6 +36,19 @@ export const getTourById = (id: number): Tour | undefined => {
     return tours.find(tour => tour.id === id);
 }
 
+export const getFirstAvailableId = (): number => {
+    let id = 0;
+    if (tours) {
+        for (let i = 0; i < tours.length; i++) {
+            if (tours[i].id > id) {
+                id = tours[i].id;
+            }
+        }
+    }
+    return id + 1;
+}
+
+
 export const statusStrings = ["NotLoggedIn", "User", "Guide", "Admin"];
 
 export const loginStatus = writable(statusStrings[Status.NotLoggedIn]);

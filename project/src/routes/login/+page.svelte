@@ -4,20 +4,15 @@
     import { statusStrings } from '$lib/Tour';
 
     function handleUserClick() {
-        // Your logic here
-        console.log('User clicked');
         loginStatus.set(statusStrings[Status.User]);
     }
 
     function handleGuideClick() {
-        // Your logic here
-        console.log('Guide clicked');
+
         loginStatus.set(statusStrings[Status.Guide]);
     }
 
     function handleAdminClick() {
-        // Your logic here
-        console.log('Admin clicked');
         loginStatus.set(statusStrings[Status.Admin]); 
     }
 </script>

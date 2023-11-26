@@ -5,7 +5,6 @@
     import { Status, loginStatus, statusStrings, bookedTours, tours} from '$lib/Tour';
     
     function handleLogOffClick() {
-        console.log('Log Off clicked');
         loginStatus.set(statusStrings[Status.NotLoggedIn]);
     }
     
@@ -53,6 +52,13 @@
                     <p class="p-4 text-xl">Logg av</p>
                 </div>
             </a>
+            {#if $loginStatus === statusStrings[Status.Guide]}
+            <a href="new">
+                <div class="rounded-lg shadow-lg border border-gray-400 hover:bg-slate-300">
+                    <p class="p-4 text-xl">Ny tur</p>
+                </div>
+            </a>
+            {/if}
         </div>
 
         {#if $loginStatus === statusStrings[Status.User]}
