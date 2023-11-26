@@ -19,6 +19,19 @@
         }
     });
 
+    let newTour = {
+        id: tour.id,
+        title: tour.title,
+        description: tour.description,
+        spotsLeft: tour.spotsLeft,
+        spots: tour.spots,
+        location: tour.location,
+        guide: tour.guide,
+        price: tour.price,
+        date: tour.date,
+        time: tour.time
+    }
+
     function bookTour() {
         tour.spotsLeft--;
         booked = true;
@@ -28,6 +41,20 @@
         tour.spotsLeft++;
         booked = false;
         bookedTours.splice(bookedTours.indexOf(tour), 1);
+    }
+    function saveTour() {
+        tour.title = newTour.title;
+        tour.description = newTour.description;
+        tour.spotsLeft = newTour.spotsLeft;
+        tour.spots = newTour.spots;
+        tour.location = newTour.location;
+        tour.guide = newTour.guide;
+        tour.price = newTour.price;
+        tour.date = newTour.date;
+        tour.time = newTour.time;
+    }
+    function deleteTour() {
+
     }
 
     // TODO (After persistent storage):
@@ -98,130 +125,106 @@
                 <div class="flex flex-col gap-4 w-full">
                     <form class=m-2>
                         <label for="title">Tittel:</label>
-                        <input class="border border-black rounded" type="text" id="title" name="title" bind:value="{tour.title}">
+                        <input class="border border-black rounded" type="text" id="title" name="title" bind:value="{newTour.title}">
                     </form>
 
                     <form class=m-2>
                         <label for="description">Beskrivelse:</label>
-                        <textarea id="description" name="description" bind:value="{tour.description}" class="w-full h-16"></textarea>
+                        <textarea id="description" name="description" bind:value="{newTour.description}" class="w-full h-16 border border-black rounded"></textarea>
                     </form>
                 </div>
 
                 <div class="flex flex-col gap-2 w-full min-w-4">
                     <form class=m-2>
                         <label for="spotsLeft">Antall tilgjengelige plasser:</label>
-                        <input class="border border-black rounded" type="number" id="spotsLeft" name="spotsLeft" min="1" max="10" bind:value="{tour.spotsLeft}">
+                        <input class="border border-black rounded" type="number" id="spotsLeft" name="spotsLeft" min="1" max="10" bind:value="{newTour.spotsLeft}">
                     </form>
 
                     <form class=m-2>
                         <label for="spots">Maks plasser:</label>
-                        <input class="border border-black rounded" type="number" id="spots" name="spots" bind:value="{tour.spotsLeft}">
+                        <input class="border border-black rounded" type="number" id="spots" name="spots" bind:value="{newTour.spotsLeft}">
                     </form>
                     
                 </div>
                 <div class="flex flex-col lg:flex-row gap-10 w-full items-center min-w-4">
                     <form class=m-2>
                         <label for="location">Sted:</label>
-                        <input class="border border-black rounded" type="text" id="location" name="location" bind:value="{tour.location}">
+                        <input class="border border-black rounded" type="text" id="location" name="location" bind:value="{newTour.location}">
                     </form>
 
                     <form class=m-2>
                         <label for="guide">Guide:</label>
-                        <input class="border border-black rounded" type="text" id="guide" name="guide" bind:value="{tour.guide}">
+                        <input class="border border-black rounded" type="text" id="guide" name="guide" bind:value="{newTour.guide}">
                     </form>
 
                     <form class=m-2>
                         <label for="price">Pris:</label>
-                        <input class="border border-black rounded" type="number" id="price" name="price" min="0" max="10000" bind:value="{tour.price}">
+                        <input class="border border-black rounded" type="number" id="price" name="price" min="0" max="10000" bind:value="{newTour.price}">
                     </form>
                 </div>
                 <div class="flex flex-col lg:flex-row gap-10 w-full items-center min-w-4">
                     <form class=m-2>
                         <label for="date">Dato:</label>
-                        <input class="border border-black rounded" type="date" id="date" name="date" bind:value="{tour.date}">
+                        <input class="border border-black rounded" type="date" id="date" name="date" bind:value="{newTour.date}">
                     </form>
 
                     <form class=m-2>
                         <label for="time">Klokkeslett:</label>
-                        <input class="border border-black rounded" type="time" id="time" name="time" bind:value="{tour.time}">
+                        <input class="border border-black rounded" type="time" id="time" name="time" bind:value="{newTour.time}">
                     </form>
                 </div>
-            {:else if $loginStatus == statusStrings[Status.Admin]}
-            
-            {#if booked}<div>
-                Som administrator kan du fjerne bookingen:
-                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" on:click={unbookTour}>
-                    Avbestill
+
+                <!-- guide controls -->
+                <div class="flex flex-col lg:flex-row gap-8 py-4 w-full items-center justify-left">
+                    <!-- save -->
+                    <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" on:click={saveTour}>
+                        Lagre endringer
+                    </button>
+                    <!-- delete -->
+                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" on:click={deleteTour}>
+                        Slett tur
+                    </button>
+                </div>
+
+
+            {:else if $loginStatus == statusStrings[Status.Admin]}   
+
+            <!-- admin controls -->
+            <div class="flex flex-col lg:flex-row gap-8 w-full py-4 items-center justify-left">
+
+                <button class="py-2 px-4 rounded border border-gray-400 hover:bg-slate-300 font-bold" on:click={() => alert('Send mail til turguiden her')}>
+                    Kontakt turguide
+                </button>
+                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" on:click={deleteTour}>
+                    Slett tur
                 </button>
             </div>
-            {/if}
-            <div class="flex flex-col gap-4 w-full">
-                <form class=m-2>
-                    <label for="title">Tittel:</label>
-                    <input class="border border-black rounded" type="text" id="title" name="title" bind:value="{tour.title}">
-                </form>
-
-                <form class=m-2>
-                    <label for="description">Beskrivelse:</label>
-                    <textarea id="description" name="description" bind:value="{tour.description}" class="w-full h-16"></textarea>
-                </form>
-            </div>
-
-            <div class="flex flex-col gap-2 w-full min-w-4">
-                <form class=m-2>
-                    <label for="spotsLeft">Antall tilgjengelige plasser:</label>
-                    <input class="border border-black rounded" type="number" id="spotsLeft" name="spotsLeft" min="1" max="10" bind:value="{tour.spotsLeft}">
-                </form>
-
-                <form class=m-2>
-                    <label for="spots">Maks plasser:</label>
-                    <input class="border border-black rounded" type="number" id="spots" name="spots" bind:value="{tour.spotsLeft}">
-                </form>
-                
-            </div>
-            <div class="flex flex-col lg:flex-row gap-10 w-full items-center min-w-4">
-                <form class=m-2>
-                    <label for="location">Sted:</label>
-                    <input class="border border-black rounded" type="text" id="location" name="location" bind:value="{tour.location}">
-                </form>
-
-                <form class=m-2>
-                    <label for="guide">Guide:</label>
-                    <input class="border border-black rounded" type="text" id="guide" name="guide" bind:value="{tour.guide}">
-                </form>
-
-                <form class=m-2>
-                    <label for="price">Pris:</label>
-                    <input class="border border-black rounded" type="number" id="price" name="price" min="0" max="10000" bind:value="{tour.price}">
-                </form>
-            </div>
-            <div class="flex flex-col lg:flex-row gap-10 w-full items-center min-w-4">
-                <form class=m-2>
-                    <label for="date">Dato:</label>
-                    <input class="border border-black rounded" type="date" id="date" name="date" bind:value="{tour.date}">
-                </form>
-
-                <form class=m-2>
-                    <label for="time">Klokkeslett:</label>
-                    <input class="border border-black rounded" type="time" id="time" name="time" bind:value="{tour.time}">
-                </form>
-            </div>
             {:else}
-            {#if booked}
+
+            <!-- user controls -->
+            <div class="flex flex-col lg:flex-row gap-8 w-full py-4 items-center justify-left">
+
+                <!-- contact -->
+                <button class="py-2 px-4 rounded border border-gray-400 hover:bg-slate-300 font-bold" on:click={() => alert('Send mail til turguiden her')}>
+                    Kontakt turguide
+                </button>
+                
+                {#if booked}
                 <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" on:click={unbookTour}>
                     Turen er bestilt!
                 </button>
                 {:else if tour.spotsLeft > 0}
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" on:click={bookTour}>
-                        Bestill Tur
-                    </button>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" on:click={bookTour}>
+                    Bestill Tur
+                </button>
                 {:else}
-                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                        Turen er full!
-                    </button>
+                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                    Turen er full!
+                </button>
                 {/if}
+            </div>
             {/if}
-            
+                
         </div>
     </article>
 </div>
