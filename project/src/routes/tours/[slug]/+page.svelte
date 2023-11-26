@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { getTourById } from "$lib/Tour";
+    import { goto } from "$app/navigation";
+    import { getTourById, tours } from "$lib/Tour";
     import { loginStatus } from '$lib/Tour';
     import { statusStrings } from '$lib/Tour';
     import { Status } from '$lib/Tour';
@@ -54,7 +55,9 @@
     }
     // TODO
     function deleteTour() {
-
+        tours.splice(tours.indexOf(tour), 1);
+        alert('Tur ' + tour.title + ' er slettet');
+        goto('/');
     }
 
     // TODO (After persistent storage):
@@ -190,11 +193,12 @@
             {:else if $loginStatus == statusStrings[Status.Admin]}   
 
             <!-- admin controls -->
-            <div class="flex flex-col lg:flex-row gap-8 w-full py-4 items-center justify-left">
-
+            <div class="flex flex-col lg:flex-row gap-8 py-4 w-full items-center justify-left">
+                <!-- contact -->
                 <button class="py-2 px-4 rounded border border-gray-400 hover:bg-slate-300 font-bold" on:click={() => alert('Send mail til turguiden her')}>
                     Kontakt turguide
                 </button>
+                <!-- delete -->
                 <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" on:click={deleteTour}>
                     Slett tur
                 </button>
