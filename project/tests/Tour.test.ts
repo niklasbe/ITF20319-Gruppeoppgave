@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { getTourById} from "../src/lib/Tour";
+import { getTourById, getFirstAvailableId, tours} from "../src/lib/Tour";
 import type { Tour } from '../src/lib/Tour';
 
 describe('Tour tests', () => {
@@ -25,5 +25,10 @@ describe('Tour tests', () => {
     it('getTourById should return undefined for invalid id', () => {
         const invalidId = 999;
         expect(getTourById(invalidId)).toBeUndefined();
+    });
+
+    it('getFirstByAvailableId should return correct id for valid ', () => {
+        const expectedId = tours.length;
+        expect(getFirstAvailableId()).toEqual(expectedId);
     });
 });
