@@ -223,24 +223,48 @@
 \subsection{Ikke-funksjonelle Krav}
 \begin{enumerate}
     \item \textbf{Skalerbarhet} \\
-    Systemet skal kunne håndtere en økende mengde brukere og transaksjoner uten ytelsesproblemer. Som for eksempel 10000 brukere og 1000 turer.
+    Systemet skal kunne håndtere opptil 50 000 samtidige brukere og 5000 samtidige transaksjoner uten ytelsesnedgang.
 
     \item \textbf{Sikkerhet} \\
-    Beskyttelse av brukerdata og sikre betalingstransaksjoner er avgjørende.
+    Systemet skal følge beste praksis for datasikkerhet med ende-til-ende-kryptering for transaksjoner og GDPR-overholdelse for databeskyttelse.
 
     \item \textbf{Tilgjengelighet} \\ 
-    Høy oppetid og pålitelighet, slik at brukerne alltid kan få tilgang til systemet.
+    Systemet skal være tilgjengelig 99,9\% av tiden, med en maksimal nedetid på 8 timer årlig.
 
     \item \textbf{Responsivitet} \\
-    Plattformen skal fungere godt på både datamaskiner og mobile enheter.
+    Plattformen skal tilpasse seg forskjellige skjermstørrelser og enheter, med en lastetid på maksimalt 3 sekunder for hver side.
 
     \item \textbf{Internasjonalisering} \\
-    Støtte for flere språk og valutaer, spesielt viktig for en tjeneste som fokuserer på turisme.
+    Plattformen skal støtte minst ti internasjonale språk og de fem mest brukte valutaene for turisme.
 
     \item \textbf{Ytelse} \\
-    System for kommunikasjon mellom turistene og guidene, både før og etter turen.
+    Systemet skal kunne laste innhold og svare på brukerforespørsler innen 2 sekunder under normale driftsforhold.
 
     \item \textbf{Vedlikehold og Support} \\
-    Enkel vedlikehold og tilgjengelig kundestøtte for å håndtere brukerproblemer og systemoppdateringer.
+    Systemet skal støtte hot-swapping av moduler uten nedetid og tilby 24/7 kundestøtte med en maksimal svartid på 4 timer.
+
+    \item \textbf{Modularitet} \\
+    Systemarkitekturen skal være modulbasert for å tillate uavhengige oppdateringer og vedlikehold av forskjellige komponenter uten å påvirke andre deler av systemet.
+
+    \item \textbf{Brukervennlighet} \\
+    Plattformen skal følge anerkjente prinsipper for UX-design, med brukertester som viser at nye brukere kan utføre grunnleggende oppgaver uten opplæring.
+
+    \item \textbf{Utvidbarhet} \\
+    Systemet skal være designet for enkel integrasjon med tredjepartstjenester som betalingsgateways, sosiale medier og andre APIer.
+
+    \item \textbf{Overholdelse av standarder} \\
+    Plattformen skal overholde relevante industristandarder og reguleringer, inkludert, men ikke begrenset til, PCI DSS for betalingssikkerhet og ADA for tilgjengelighet.
+
+    \item \textbf{Katastrofegjenoppretting} \\
+    Systemet skal ha en robust katastrofegjenopprettingsplan som inkluderer regelmessig sikkerhetskopiering av data og evnen til å raskt gjenopprette operasjoner i tilfelle et systemsvikt.
+
+    \item \textbf{Oppdateringshyppighet} \\
+    Plattformen skal støtte kontinuerlig leveranse og integrasjon, med evnen til å rulle ut oppdateringer minst en gang i måneden uten nedetid.
+
+    \item \textbf{Miljøpåvirkning} \\
+    Systemet skal ha en grønn IT-strategi som minimerer miljøpåvirkningen, inkludert energieffektiv infrastruktur og støtte for fjernarbeid.
+    
+    \item \textbf{Dataintegritet} \\
+    Systemet skal inneholde mekanismer for å sikre dataintegritet, med transaksjonslogger og regelmessige revisjoner for å oppdage og rette opp feil.
 \end{enumerate}
 \end{document}
