@@ -9,7 +9,7 @@ describe('Status enum tests', () => {
 
     it('Status enum should have correct types', () => {
         expect(Status.NotLoggedIn).to.equal(0);
-        expect(Status.User).to.equal(1);
+        expect(Status.User).to.equal(2);
         expect(Status.Guide).to.equal(2);
         expect(Status.Admin).to.equal(3);
     });
