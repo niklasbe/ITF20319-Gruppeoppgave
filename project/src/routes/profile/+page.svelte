@@ -1,8 +1,8 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import { goto } from '$app/navigation';
-    import { Status, loginStatus, statusStrings, bookedTours, tours} from '$lib/Tour';
-    
+    import { Status, loginStatus, statusStrings, bookedTours, tours, saveTours} from '$lib/Tour';
+
     function handleLogOffClick() {
         loginStatus.set(statusStrings[Status.NotLoggedIn]);
     }
@@ -20,6 +20,7 @@
         if (tourIndex > -1) {
             console.log("Deleting tour: " + tours[tourIndex].title);
             tours.splice(tourIndex, 1);
+            saveTours();
         }
 }
 
