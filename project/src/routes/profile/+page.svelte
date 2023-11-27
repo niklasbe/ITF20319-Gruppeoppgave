@@ -21,6 +21,7 @@
             console.log("Deleting tour: " + tours[tourIndex].title);
             tours.splice(tourIndex, 1);
             saveTours();
+            alert("Tur slettet.")
         }
 }
 
