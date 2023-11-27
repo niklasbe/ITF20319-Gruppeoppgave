@@ -74,6 +74,7 @@
         
         <!-- booked tours -->
         <!-- currently only shows the booked tours -->
+        
         <div class="flex flex-col lg:flex-row flex-wrap gap-4">
             {#each bookedTours as tour (tour.id)}
             <a href="tours/{tour.id}">
@@ -108,7 +109,9 @@
         <!-- so just display all tours -->
         {:else if $loginStatus === statusStrings[Status.Guide]}
         <p class="text-xl">Dine turer:</p>
-        
+        {#if bookedTours.length === 0}
+                <p class="text-xl">Ingen turer registrert.</p>
+        {/if}
         <div class="flex flex-col lg:flex-row flex-wrap gap-4">
             {#each tours as tour (tour.id)}
             <a href="tours/{tour.id}">
@@ -136,6 +139,7 @@
                 </article>
             </a>
             {/each}
+            
         </div>
         {:else if $loginStatus === statusStrings[Status.Admin]}
             {#each tours as tour (tour.id)}
@@ -175,8 +179,6 @@
                 {/each}
         {/if}
 
-        {#if bookedTours.length === 0}
-        <p class="text-xl">Ingen turer registrert.</p>
-        {/if}
+        
     </div>
 </div>
