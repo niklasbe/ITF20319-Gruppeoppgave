@@ -23,5 +23,10 @@ While in `project/`, run the following command to start the program:
 A web server should start. Following the instructions in your terminal, you should be able
 to connect to the server.
 
+## Note
+
+The program uses localStorage for persistent storage. These have no set expiration date, and therefore 
+need to be cleared from your browser manually.
+
 # Credits
 This project uses icons provided by Feather (https://feathericons.com), which are licensed under the MIT License (https://opensource.org/licenses/MIT).
