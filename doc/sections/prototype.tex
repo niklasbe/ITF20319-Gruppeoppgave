@@ -2,12 +2,28 @@
 \begin{document}
 \section{Prototype}
 \subsection{Introduksjon}
-Dette er en kort forklaring av prototypens funksjonalitet.
+For å illustrere et potensielt utseende og funksjonalitet for vår løsning, har vi utviklet en innledende prototype. Det er essensielt å understreke at prototypen ikke er en fullstendig realisering av alle elementene som er oppført i kravspesifikasjonen. Vi har valgt å konsentrere oss om de mest sentrale og vesentlige kravene og har ivaretatt disse i vår foreløpige versjon. Som et resultat av dette fokuset, inneholder prototypen en rekke begrensninger. Vi har tatt omsorg for å detaljert beskrive disse begrensningene i den følgende delen, for å sikre klarhet og forståelse av prototypens nåværende kapasitet.
 
 \subsubsection{Begrensninger}
-For prototypen eksisterer kun én bruker, én guide og én admin. \\
-Dette er for å vise funksjonaliteten til de forskjellige innloggings-typene. 
+Innenfor rammene av prototypen har vi opprettet en enkel modell som inkluderer bare én bruker, én guide og én administrator. Dette er gjort med det formål å demonstrere og fremvise funksjonaliteten og de unike egenskapene til de forskjellige brukertypene og deres respektive innloggingsprosesser. I den endelige versjonen av vår løsning, vil det bli implementert et fullverdig innloggingssystem, som vil være i tråd med de detaljerte spesifikasjonene og kravene vi har beskrevet tidligere i kravspesifikasjonen.
 
+\begin{itemize}
+    \item \textbf{Bruker}
+
+    I prototypen har vi bevisst valgt å ikke inkludere personlig informasjon for brukeren, slik som navn, e-postadresse, telefonnummer, betalingsdetaljer og lignende. Dette valget ble tatt for å konsentrere demonstrasjonen på de funksjonelle aspektene av hva en etablert bruker kan utføre innenfor systemet. Denne tilnærmingen tillater oss å rette fokus mot systemets operasjonelle kapabiliteter uten å bli distrahert av håndteringen av personlige data.
+    
+    \item \textbf{Guide}
+    
+    I vår kravspesifikasjon er det detaljert at guider skal ha muligheten til å opprette, redigere og fjerne turer. Denne funksjonaliteten er integrert i prototypen, men det er imidlertid viktig å bemerke at det i prototypen ikke er implementert et system for å legge til nye guider. Videre er alle turene i systemet for øyeblikket tilknyttet en enkelt guide, noe som er en midlertidig forenkling og ikke representerer det forventede virkelige scenariet der turer vil være administrert av en rekke forskjellige guider.
+    \item \textbf{Administrator}
+    
+    Administratorrollen følger de samme begrensningene som både bruker og guide. For prototypen er det tilstrekkelig men kun én administrator for å demonstrere funksjonaliteten en slik rolle vil kunne ha.
+
+    \item \textbf{Lagring}
+    
+    I den nåværende utformingen av prototypen har vi ikke integrert et system for permanent lagring. Når den endelige løsningen utvikles, vil robuste lagringssystemer som databaser eller tilsvarende lagringsverktøy bli implementert. For øyeblikket opererer prototypen med data som er innlastet fra en fil, og alle gjorte endringer blir midlertidig beholdt i minnet. Det er vesentlig å være oppmerksom på at enhver omstart av prototypen vil føre til at disse endringene går tapt, ettersom det ikke er noen form for lagringsmekanisme som bevarer informasjonen mellom øktene.
+
+\end{itemize}
 \subsection{Hovedside}
 Prototypens hovedside har følgende funksjonalitet og elementer:
 
