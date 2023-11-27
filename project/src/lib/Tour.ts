@@ -2,19 +2,6 @@ import { writable } from "svelte/store";
 import jsonData from "../tours.json";
 
 /**
- * An array of Tour objects.
- * This array is created by parsing the JSON data representing the tours.
- */
-export const tours: Tour[] = jsonData;
-
-/**
- * An array of Tour objects that have been booked.
- * Initially, this array is empty. As tours are booked, they are added to this array.
- */
-export const bookedTours: Tour[] = [];
-
-
-/**
  * Represents a tour.
  */
 export interface Tour {
@@ -29,6 +16,76 @@ export interface Tour {
     spotsLeft: number;      /* The number of spots left available for booking. */
     guide: string;          /* The name of the guide leading the tour. */
 }
+
+
+
+/**
+ * Saves the booked tours to local storage.
+ * 
+ * This function takes the global array of booked tours, converts it into a JSON string,
+ * and then stores this string in local storage under the key "bookedTours".
+ */
+export const saveBookedTours = () => {
+    localStorage.setItem("bookedTours", JSON.stringify(bookedTours));
+}
+
+/**
+ * Saves the tours to local storage.
+ * 
+ * This function takes the global array of tours, converts it into a JSON string,
+ * and then stores this string in local storage under the key "tours".
+ */
+export const saveTours = () => {
+    localStorage.setItem("tours", JSON.stringify(tours));
+}
+
+/**
+ * Loads the tours from local storage.
+ * 
+ * This function retrieves the "tours" item from local storage.
+ * If the "tours" item exists, it parses the JSON string into an array of Tour objects and returns it.
+ * If the "tours" item does not exist, it returns the array of Tour objects from the tours.json file.
+ * 
+ * @returns {Tour[]} An array of Tour objects.
+ */
+export const loadTours = () => {
+    const tmp_tours = localStorage.getItem("tours");
+    if (tmp_tours) {
+        tours = JSON.parse(tmp_tours) as Tour[];
+        return;
+    }
+    tours = jsonData;
+}
+
+/**
+ * Loads the booked tours from local storage.
+ * 
+ * This function retrieves the "bookedTours" item from local storage.
+ * If the "bookedTours" item exists, it parses the JSON string into an array of Tour objects and returns it.
+ * If the "bookedTours" item does not exist, it returns an empty array.
+ * 
+ * @returns {Tour[]} An array of Tour objects that have been booked.
+ */
+export const loadBookedTours = () => {
+    const tmp_tours = localStorage.getItem("bookedTours");
+    if (tmp_tours) {
+        bookedTours = JSON.parse(tmp_tours) as Tour[];
+        return;
+    }
+    bookedTours = [];
+}
+
+/**
+ * An array of Tour objects.
+ * This array is created by parsing the JSON data representing the tours.
+ */
+export let tours: Tour[] = [];
+
+/**
+ * An array of Tour objects that have been booked.
+ * Initially, this array is empty. As tours are booked, they are added to this array.
+ */
+export let bookedTours: Tour[] = [];
 
 
 /**

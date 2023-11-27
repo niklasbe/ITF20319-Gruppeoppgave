@@ -16,11 +16,11 @@
     });
 
     function deleteTour(tourId: number): void {
-    const tourIndex = tours.findIndex(tour => tour.id === tourId);
-    if (tourIndex > -1) {
-        console.log("Deleting tour: " + tours[tourIndex].title);
-        tours.splice(tourIndex, 1);
-    }
+        const tourIndex = tours.findIndex(tour => tour.id === tourId);
+        if (tourIndex > -1) {
+            console.log("Deleting tour: " + tours[tourIndex].title);
+            tours.splice(tourIndex, 1);
+        }
 }
 
 </script>

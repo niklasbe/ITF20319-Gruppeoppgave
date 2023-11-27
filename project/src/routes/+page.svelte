@@ -5,16 +5,21 @@
     import { loginStatus } from '$lib/Tour';
     import { statusStrings } from '$lib/Tour';
     import { Status } from '$lib/Tour';
+
+    import type { Tour } from '$lib/Tour';
     
 
 
     /* code for searching tours */
     let searchTerm = '';    
-    let filteredTours = tours;
+    let filteredTours: Tour[] = tours;
 
+    /* Return tours matching title. */
+    /* Called when search term changes */
     function searchTours() {
         filteredTours = tours.filter(tour => tour.title.toLowerCase().includes(searchTerm.toLowerCase()));
     }
+
 
 </script>
 

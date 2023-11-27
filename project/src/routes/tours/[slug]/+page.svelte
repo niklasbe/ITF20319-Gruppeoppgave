@@ -1,6 +1,6 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
-    import { getTourById, tours } from "$lib/Tour";
+    import { getTourById, saveBookedTours, saveTours, tours } from "$lib/Tour";
     import { loginStatus } from '$lib/Tour';
     import { statusStrings } from '$lib/Tour';
     import { Status } from '$lib/Tour';
@@ -18,6 +18,7 @@
         }
     });
 
+    /* temporary tour object for editing */
     let newTour = {
         id: tour.id,
         title: tour.title,
@@ -35,11 +36,13 @@
         tour.spotsLeft--;
         booked = true;
         bookedTours.push(tour);
+        saveBookedTours();
     }
     function unbookTour() {
         tour.spotsLeft++;
         booked = false;
         bookedTours.splice(bookedTours.indexOf(tour), 1);
+        saveBookedTours();
     }
     function saveTour() {
         tour.title = newTour.title;
@@ -51,10 +54,12 @@
         tour.price = newTour.price;
         tour.date = newTour.date;
         tour.time = newTour.time;
+        saveTours();
     }
     function deleteTour() {
         tours.splice(tours.indexOf(tour), 1);
         alert('Tur ' + tour.title + ' er slettet');
+        saveTours();
         goto('/');
     }
 

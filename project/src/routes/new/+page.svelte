@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { tours } from "$lib/Tour";
+    import { saveTours, tours } from "$lib/Tour";
     import type { Tour } from "$lib/Tour";
     import { goto } from '$app/navigation';
     import { getFirstAvailableId } from "$lib/Tour";
@@ -28,6 +28,7 @@
         }
         tour.id = getFirstAvailableId();
         tours.push(tour);
+        saveTours();
         console.log("Added tour: " + tour.title);
         // redirect to index
         goto("/");
