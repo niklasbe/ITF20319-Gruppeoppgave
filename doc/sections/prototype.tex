@@ -16,8 +16,9 @@ I vår kravspesifikasjon er det detaljert at guider skal ha muligheten til å op
 Administratorrollen følger de samme begrensningene som både bruker og guide. For prototypen er det tilstrekkelig men kun én administrator for å demonstrere funksjonaliteten en slik rolle vil kunne ha.
 
 \subsubsection*{Lagring}
-I den nåværende utformingen av prototypen har vi ikke integrert et system for permanent lagring. Når den endelige løsningen utvikles, vil robuste lagringssystemer som databaser eller tilsvarende lagringsverktøy bli implementert. For øyeblikket opererer prototypen med data som er innlastet fra en fil, og alle gjorte endringer blir midlertidig beholdt i minnet. Det er vesentlig å være oppmerksom på at enhver omstart av prototypen vil føre til at disse endringene går tapt, ettersom det ikke er noen form for lagringsmekanisme som bevarer informasjonen mellom øktene.
+I vår innledende utviklingsfase har vi valgt å benytte nettleserens localStorage som et midlertidig lagringssystem for å bevare data. Denne teknikken er praktisk for å demonstrere lagringskonsepter og sikre at brukerdata persisters gjennom flere sesjoner i prototypen. Imidlertid er det viktig å anerkjenne at dette er en begrenset tilnærming, hovedsakelig brukt på grunn av dens enkelhet og umiddelbare tilgjengelighet.
 
+I det endelige produktet vil vi migrere til mer avanserte løsninger som databaser. Databaser tilbyr flere fordeler, inkludert men ikke begrenset til, forbedret sikkerhet, mulighet for samtidige brukerforbindelser, effektiv datahåndtering og skalerbarhet, og avanserte spørringsmuligheter som gir grunnlag for omfattende dataanalyse og rapportering. Ved å velge en database vil vi også kunne tilby en mer sømløs brukeropplevelse med raskere innlastningstider og bedre dataintegritet.
 \subsection{Hovedside}
 Prototypens hovedside har følgende funksjonalitet og elementer:
 
