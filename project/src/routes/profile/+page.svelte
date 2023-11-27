@@ -57,7 +57,7 @@
             <!-- log off -->
             <a href="/" on:click={handleLogOffClick}>
                 <div class="rounded-lg shadow-lg border border-gray-400 hover:bg-slate-300">
-                    <p class="p-4 text-xl">Logg av</p>
+                    <p class="p-4 text-xl">Logg ut</p>
                 </div>
             </a>
             {#if $loginStatus === statusStrings[Status.Guide]}
@@ -173,6 +173,10 @@
                     </a>
                 </div>
                 {/each}
+        {/if}
+
+        {#if bookedTours.length === 0}
+        <p class="text-xl">Ingen turer registrert.</p>
         {/if}
     </div>
 </div>

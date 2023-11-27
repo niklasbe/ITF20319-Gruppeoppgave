@@ -3,6 +3,8 @@
     import type { Tour } from "$lib/Tour";
     import { goto } from '$app/navigation';
     import { getFirstAvailableId } from "$lib/Tour";
+    import { onMount } from 'svelte';
+    import { Status, loginStatus, statusStrings, bookedTours } from '$lib/Tour';
 
 
     // empty tour object
@@ -30,11 +32,14 @@
         // redirect to index
         goto("/");
     }
-    
-    function deleteTour(id : number) {
-        console.log("Deleting tour: " + tour.title);
-        tours.splice(id, 1);
-    }
+
+     /* redirect if not a guide */
+     onMount(async () => {
+        const storeValue = $loginStatus;
+        if (!(storeValue === statusStrings[Status.Guide])) {
+            goto('/');
+        }
+    });
 
 </script>
 
