@@ -5,7 +5,6 @@
     import { statusStrings } from '$lib/Tour';
     import { Status } from '$lib/Tour';
     import { bookedTours } from "$lib/Tour";
-    import { tours } from "$lib/Tour";
 	export let data;
 
     // get tour by slug id
