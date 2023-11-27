@@ -1,7 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import { goto } from '$app/navigation';
-
     import { Status, loginStatus, statusStrings, bookedTours, tours} from '$lib/Tour';
     
     function handleLogOffClick() {
@@ -15,6 +14,15 @@
             goto('/');
         }
     });
+
+    function deleteTour(tourId: number): void {
+    const tourIndex = tours.findIndex(tour => tour.id === tourId);
+    if (tourIndex > -1) {
+        console.log("Deleting tour: " + tours[tourIndex].title);
+        tours.splice(tourIndex, 1);
+    }
+}
+
 </script>
 
 <div class="container mx-auto">
@@ -129,6 +137,42 @@
             </a>
             {/each}
         </div>
+        {:else if $loginStatus === statusStrings[Status.Admin]}
+            {#each tours as tour (tour.id)}
+                <div class="flex flex-col border border-gray-400 grow  rounded-lg shadow-lg hover:scale-100 ease-in-out duration-150 hover:-translate-y-1">
+                    <a href="tours/{tour.id}">
+                    <article class="flex flex-col ">
+                        <h3 class="m-4 font-semibold">{tour.title}</h3>
+                        <p class="m-4">{tour.description}</p>
+                        <div class="flex flex-col">
+                            <div class="flex flex-row items-center">
+                                <img src="clock.svg" alt="clock" class="w-4 h-4 m-4" />
+                                <p class="m-4 font-light italic">{tour.time}</p>
+                            </div>
+                            <div class="flex flex-row">
+                                <img src="calendar.svg" alt="calendar" class="w-4 h-4 m-4" />
+                                <p class="m-4 font-light italic">{tour.date}</p>
+                            </div>
+                            <div class="flex flex-row items-center">
+                                <img src="map-pin.svg" alt="location" class="w-4 h-4 m-4" />
+                                <p class="m-4 font-light italic">{tour.location}</p>
+                            </div>
+                            <div class="flex flex-row items-center">
+                                <img src="dollar-sign.svg" alt="price" class="w-4 h-4 m-4" />
+                                <p class="m-4 font-light italic">{tour.price}</p>
+                            </div>
+                            
+                        </div>
+                    </article>
+                    </a>
+                    <!-- How make dis update??? -->
+                    <a href="/">
+                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded m-4 w-40" on:click={() => deleteTour(tour.id)}>
+                            Slett tur
+                        </button>
+                    </a>
+                </div>
+                {/each}
         {/if}
     </div>
 </div>

@@ -31,6 +31,10 @@
         goto("/");
     }
     
+    function deleteTour(id : number) {
+        console.log("Deleting tour: " + tour.title);
+        tours.splice(id, 1);
+    }
 
 </script>
 

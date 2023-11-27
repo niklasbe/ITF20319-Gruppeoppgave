@@ -4,7 +4,7 @@
     import { statusStrings } from '$lib/Tour';
     import { Status } from '$lib/Tour';
     import { bookedTours } from "$lib/Tour";
-
+    import { tours } from "$lib/Tour";
 	export let data;
 
     // get tour by slug id
@@ -52,14 +52,11 @@
         tour.date = newTour.date;
         tour.time = newTour.time;
     }
-    // TODO
     function deleteTour() {
-
+        console.log("Deleting tour: " + tour.title);
+        tours.splice(tours.indexOf(tour), 1);
     }
 
-    // TODO (After persistent storage):
-    // Check if user is already booked
-    // If page_id in user's booked tours, set booked to true
 </script>
 
 <div class="container mx-auto"> 
@@ -195,9 +192,11 @@
                 <button class="py-2 px-4 rounded border border-gray-400 hover:bg-slate-300 font-bold" on:click={() => alert('Send mail til turguiden her')}>
                     Kontakt turguide
                 </button>
-                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" on:click={deleteTour}>
-                    Slett tur
-                </button>
+                <a href="/">
+                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" on:click={deleteTour}>
+                        Slett tur
+                    </button>
+                </a>
             </div>
             {:else}
 
